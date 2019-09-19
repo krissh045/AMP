@@ -51,28 +51,23 @@ limitations under the License.
     <!-- The clipPath is used in the CSS `clip-path` property; it's used to achieve a
       clipping effect while scrolling the page (see mocks/lune/landing-page-clipping.gif) -->
         
-        <amp-analytics config="http://example.com/config.json">
-<script type="application/json">
-{
-  "requests": {
-    "pageview": "https://example.com/analytics?url=${canonicalUrl}&title=${title}&acct=${account}&clientId=${clientId(cid-scope)}",
-  },
-  "vars": {
-    "account": "ABC123",
-    "title": "Homepage"
-  },
-  "triggers": {
-    "some-event": {
-      "on": "visible",
-      "request": "pageview",
-      "vars": {
-        "title": "My homepage",
-        "clientId": "my user"
-      }
-  }
-}
-</script>
-      </amp-analytics>  
+       <amp-analytics type="adobeanalytics_nativeConfig"> 
+ <script type="application/json"> 
+ { 
+  "requests": { 
+   "base": "https://${host}", 
+   "iframeMessage": "${base}?campaign=${queryParam(campaign)}&pageURL=${ampdocUrl}&ref=${documentReferrer}" 
+  }, 
+  "vars": { 
+   "host": "www.reliancegeneral.co.in" 
+  }, 
+  "extraUrlParams": { 
+   "pageName": "<Custom Page Name>", 
+   "v2": "<page URL>"
+  } 
+ } 
+ </script> 
+</amp-analytics>
         
     <div class="hide">
       <svg width="0" height="0">
